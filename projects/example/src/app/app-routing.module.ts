@@ -7,11 +7,17 @@ const routes: Routes = [
   { path: 'survey/list', component: SurveyListPageComponent },
   { path: 'survey/create', component: MiaSurveyCreatePageComponent },
   { path: 'survey/edit/:id', component: MiaSurveyCreatePageComponent },
-  { 
-    path: 'survey/run/:id/:token', 
+  {
+    path: 'survey/run/:id/:token',
     component: SurveyExecutePageComponent,
     data: {
-      onlyInvitation: true
+      onlyInvitation: true,
+      logo: '/assets/img/logos/logo-white.png',
+      logoName: 'Dorotea',
+      topbarBackgroundColor: '#002A5C',
+      buttonBackURL: '/',
+      buttonColor: '#03A4B3',
+      textColor: '#002A5C',
     } as MiaSurveyExecutePageConfig
   }
 ];

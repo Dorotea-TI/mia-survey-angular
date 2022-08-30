@@ -7,6 +7,12 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 export class MiaSurveyExecutePageConfig {
   showHeader? = false;
   onlyInvitation? = false;
+  logo? = 'https://agencycoda.com/assets/img/logos/logo-white.svg';
+  logoName? = 'Agency Coda';
+  topbarBackgroundColor? = '#000000';
+  buttonColor? = '#000000';
+  buttonBackURL? = '';
+  textColor? = '#000000';
 }
 
 @Component({
@@ -30,7 +36,7 @@ export class SurveyExecutePageComponent implements OnInit, OnDestroy {
   constructor(
     protected surveyService: MiaSurveyService,
     protected route: ActivatedRoute,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.loadConfig();
