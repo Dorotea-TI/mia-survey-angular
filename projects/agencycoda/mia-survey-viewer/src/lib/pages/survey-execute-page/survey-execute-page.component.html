@@ -1,74 +1,89 @@
-<!--<app-loading-full-page *ngIf="isLoading"></app-loading-full-page>-->
-<div *ngIf="isLoading">Cargando...</div>
+<div class="poll-survey-preview">
+  <div class="topbar" [ngStyle]="{background: config?.topbarBackgroundColor}">
+    <img [src]="config?.logo" alt="{{ config?.logoName }}" />
+  </div>
 
-<div *ngIf="!survey && !isLoading && status == 2" class="survey-not-exist">No existe la encuesta.</div>
+  <div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+    Cargando...
+  </div>
 
-<div *ngIf="!isLoading && status == 3" class="survey-not-exist">Muchas gracias por completar la encuesta.</div>
+  <div *ngIf="!survey && !isLoading && status == 2" class="survey-not-exist">
+    <h1>No existe la encuesta.</h1>
+  </div>
 
-<div *ngIf="survey && !isLoading" class="poll-survey-create">
+  <div *ngIf="!isLoading && status == 3" class="poll-survey-completed">
+    <img src="/assets/img/illustrations/julia-success.png" alt="Success Illustration" />
+    <h1>Gracias por ayudarnos a mejorar!!</h1>
+    <p>Tu encuesta ha sido enviada correctamente.</p>
+    <a href="{{ config?.buttonBackURL }}" mat-flat-button color="primary" class="btn-primary" [ngStyle]="{background: config?.buttonColor}">VOLVER AL INICIO</a>
+  </div>
+
+  <div *ngIf="survey && !isLoading" class="poll-survey-content" [ngStyle]="{color: config?.textColor}">
     <div class="container">
-        <div *ngIf="config?.showHeader" class="header">
-            <img [src]="survey?.photo" style="width: 100%;" onerror="this.src='/assets/img/user-avatar-empty.svg';" />
-        </div>
-    
-        <div class="introduction box">
-            <h1> {{ survey?.title }}</h1>
-            <p> {{ survey?.caption }} </p>
-        </div>
+      <div *ngIf="config?.showHeader" class="header">
+        <img [src]="survey?.photo" />
+      </div>
 
-        <div *ngFor="let question of survey.questions; let index = index" class="item edit-mode">
-            <div class="content">
-                <div class="box">
-                    {{(index+1)}}. {{question.title}}
+      <div class="introduction box">
+          <h1> {{ survey?.title }}</h1>
+          <p> {{ survey?.caption }} </p>
+      </div>
 
-                    <!-- Boolean -->
-                    <ng-container *ngIf="question.type == 0">
-                        <button mat-button [ngClass]="{'active': question.val == 1}" (click)="question.val = 1">SI</button>
-                        <button mat-button [ngClass]="{'active': question.val == 0}"(click)="question.val = 0">NO</button>
-                    </ng-container>
+      <div *ngFor="let question of survey.questions; let index = index" class="item">
+        <div class="box">
+          <div class="question">{{(index+1)}}. {{question.title}}</div>
 
-                    <!-- Short answer -->
-                    <ng-container *ngIf="question.type == 1">
-                        <mat-form-field>
-                            <input matInput type="text" placeholder="Escribe tu respuesta"  [(ngModel)]="question.val" />
-                        </mat-form-field>
-                    </ng-container>
-
-                    <!-- Text Answer -->
-                    <ng-container *ngIf="question.type == 2">
-                        <mat-form-field>
-                            <textarea matInput type="text" placeholder="Escribe tu respuesta"  [(ngModel)]="question.val"></textarea>
-                        </mat-form-field>
-                    </ng-container>
-
-                    <!-- Linear Scale -->
-                    <ng-container *ngIf="question.type == 3">
-                        <mat-radio-group [(ngModel)]="question.val">
-                            <mat-radio-button *ngFor="let opt of question.data.options" [value]="opt.id">
-                                <p>{{opt.title}}</p>
-                                <p>{{opt.id}}</p>
-                            </mat-radio-button>
-                        </mat-radio-group>
-                    </ng-container>
-
-                    <!-- Selector -->
-                    <ng-container *ngIf="question.type == 4">
-                        <mat-form-field appearance="fill">
-                            <mat-select [(ngModel)]="question.val">
-                                <mat-option *ngFor="let opt of question.data.options" [value]="opt.id">
-                                    {{opt.title}}
-                                </mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                    </ng-container>
-                    <!--<poll-title-desc-preview *ngIf="question.type == 0" [question]="question"></poll-title-desc-preview>
-                    <poll-image-preview *ngIf="question.type == 1" [question]="question"></poll-image-preview>
-                    <poll-question-type-preview *ngIf="question.type == 2" [question]="question" (questionEmit)="questionEmit($event)"></poll-question-type-preview>-->
-                </div>
+          <!-- Boolean -->
+          <ng-container *ngIf="question.type == 0">
+            <div class="item-boolean">
+              <button mat-button [ngClass]="{'active': question.val == 0}" (click)="question.val = 0">NO</button>
+              <button mat-button [ngClass]="{'active': question.val == 1}" (click)="question.val = 1">SI</button>
             </div>
-        </div>
+          </ng-container>
 
-        <!-- <button type="submit" mat-flat-button color="primary" class="btn-send" (click)="onClickSend()" [disabled]="sendBtnDisable">SEND</button> -->
-        <button type="submit" mat-flat-button color="primary" class="btn-send" (click)="onClickSend()">ENVIAR</button>
+          <!-- Short answer -->
+          <ng-container *ngIf="question.type == 1">
+            <mat-form-field>
+              <input matInput type="text" placeholder="Escribe tu respuesta"  [(ngModel)]="question.val" />
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Text Answer -->
+          <ng-container *ngIf="question.type == 2">
+            <mat-form-field>
+              <textarea matInput type="text" placeholder="Escribe tu respuesta" rows="5" [(ngModel)]="question.val"></textarea>
+            </mat-form-field>
+          </ng-container>
+
+          <!-- Linear Scale -->
+          <ng-container *ngIf="question.type == 3">
+            <mat-radio-group [(ngModel)]="question.val">
+              <mat-radio-button *ngFor="let opt of question.data.options" [value]="opt.id" [labelPosition]="'before'">
+                <p>{{opt.id}}</p>
+                <p>{{opt.title}}</p>
+              </mat-radio-button>
+            </mat-radio-group>
+          </ng-container>
+
+          <!-- Selector -->
+          <ng-container *ngIf="question.type == 4">
+            <mat-form-field>
+              <mat-select [(ngModel)]="question.val" placeholder="Selecciona una opción">
+                <mat-option *ngFor="let opt of question.data.options" [value]="opt.id">
+                  {{opt.title}}
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+          </ng-container>
+          <!--<poll-title-desc-preview *ngIf="question.type == 0" [question]="question"></poll-title-desc-preview>
+          <poll-image-preview *ngIf="question.type == 1" [question]="question"></poll-image-preview>
+          <poll-question-type-preview *ngIf="question.type == 2" [question]="question" (questionEmit)="questionEmit($event)"></poll-question-type-preview>-->
+        </div>
+      </div>
+
+      <!-- <button type="submit" mat-flat-button color="primary" class="btn-send" (click)="onClickSend()" [disabled]="sendBtnDisable">SEND</button> -->
+      <button type="submit" mat-flat-button color="primary" class="btn-primary" (click)="onClickSend()" [ngStyle]="{background: config?.buttonColor}">ENVIAR</button>
     </div>
+  </div>
 </div>
