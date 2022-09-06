@@ -12,9 +12,6 @@ const routes: Routes = [
     component: SurveyExecutePageComponent,
     data: {
       onlyInvitation: true,
-      logo: '/assets/img/logos/logo-white.png',
-      logoName: 'Dorotea',
-      topbarBackgroundColor: '#002A5C',
       buttonBackURL: '/',
       buttonColor: '#03A4B3',
       textColor: '#002A5C',

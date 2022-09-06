@@ -7,9 +7,6 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 export class MiaSurveyExecutePageConfig {
   showHeader? = false;
   onlyInvitation? = false;
-  logo? = 'https://agencycoda.com/assets/img/logos/logo-white.svg';
-  logoName? = 'Agency Coda';
-  topbarBackgroundColor? = '#000000';
   buttonColor? = '#000000';
   buttonBackURL? = '';
   textColor? = '#000000';
