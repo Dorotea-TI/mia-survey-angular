@@ -30,6 +30,8 @@ export class SurveyExecutePageComponent implements OnInit, OnDestroy {
   timerSubs: any;
   status = 0; // 0 = Loading, 1 = Cargada, 2 = No Encontrada o Invitacion invalida, 3 = Completada
 
+  messageError = '';
+
   constructor(
     protected surveyService: MiaSurveyService,
     protected route: ActivatedRoute,
@@ -45,6 +47,13 @@ export class SurveyExecutePageComponent implements OnInit, OnDestroy {
   }
 
   onClickSend() {
+    this.messageError = '';
+
+    if(!this.isValidAllQuestions()){
+      this.messageError = 'Debe completar todas las preguntas, muchas gracias';
+      return;
+    }
+
     this.clearTimer();
     this.isLoading = true;
     this.surveyService.doneWithInvitation(this.survey!.id, this.token, this.survey?.questions, this.duration)
@@ -103,5 +112,15 @@ export class SurveyExecutePageComponent implements OnInit, OnDestroy {
   loadConfig() {
     this.route.data
     .subscribe(res => this.config = res ? res : new MiaSurveyExecutePageConfig());
+  }
+
+  isValidAllQuestions(): boolean {
+    for (const question of this.survey!.questions!) {
+      if(question.val === undefined || question.val === '' || question.val === null){
+        return false;
+      }
+    }
+
+    return true;
   }
 }

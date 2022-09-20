@@ -79,6 +79,7 @@
         </div>
       </div>
 
+      <p *ngIf="messageError != ''" style="color: red">{{messageError}}</p>
       <!-- <button type="submit" mat-flat-button color="primary" class="btn-send" (click)="onClickSend()" [disabled]="sendBtnDisable">SEND</button> -->
       <button type="submit" mat-flat-button color="primary" class="btn-primary" (click)="onClickSend()" [ngStyle]="{background: config?.buttonColor}">ENVIAR</button>
     </div>
