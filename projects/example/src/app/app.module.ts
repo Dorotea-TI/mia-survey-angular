@@ -5,8 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { MiaSurveyPanelModule } from 'projects/agencycoda/mia-survey-panel/src/public-api';
-import { MIA_AUTH_PROVIDER } from '@agencycoda/mia-auth';
+import { MiaSurveyPanelModule } from 'projects/dorotea/mia-survey-panel/src/public-api';
+import { MIA_AUTH_PROVIDER } from '@dorotea/mia-auth';
 import { MIA_CORE_PROVIDER } from '@agencycoda/mia-core';
 
 @NgModule({

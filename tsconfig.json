@@ -3,17 +3,17 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@agencycoda/mia-survey-core": [
-        "dist/agencycoda/mia-survey-core/agencycoda-mia-survey-core",
-        "dist/agencycoda/mia-survey-core"
+      "@dorotea/mia-survey-core": [
+        "dist/dorotea/mia-survey-core/dorotea-mia-survey-core",
+        "dist/dorotea/mia-survey-core"
       ],
       "@agencycoda/mia-survey-panel": [
         "dist/agencycoda/mia-survey-panel/agencycoda-mia-survey-panel",
         "dist/agencycoda/mia-survey-panel"
       ],
-      "@agencycoda/mia-survey-viewer": [
-        "dist/agencycoda/mia-survey-viewer/agencycoda-mia-survey-viewer",
-        "dist/agencycoda/mia-survey-viewer"
+      "@dorotea/mia-survey-viewer": [
+        "dist/dorotea/mia-survey-viewer/dorotea-mia-survey-viewer",
+        "dist/dorotea/mia-survey-viewer"
       ]
     },
     "baseUrl": "./",

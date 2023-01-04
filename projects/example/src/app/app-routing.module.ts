@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MiaSurveyCreatePageComponent, SurveyListPageComponent } from 'projects/agencycoda/mia-survey-panel/src/public-api';
-import { MiaSurveyExecutePageConfig, SurveyExecutePageComponent } from 'projects/agencycoda/mia-survey-viewer/src/public-api';
+import { MiaSurveyExecutePageConfig, SurveyExecutePageComponent } from 'projects/dorotea/mia-survey-viewer/src/public-api';
 
 const routes: Routes = [
   { path: 'survey/list', component: SurveyListPageComponent },
