@@ -7,9 +7,9 @@
         "dist/dorotea/mia-survey-core/dorotea-mia-survey-core",
         "dist/dorotea/mia-survey-core"
       ],
-      "@agencycoda/mia-survey-panel": [
-        "dist/agencycoda/mia-survey-panel/agencycoda-mia-survey-panel",
-        "dist/agencycoda/mia-survey-panel"
+      "@doroteati/mia-survey-panel": [
+        "dist/doroteati/mia-survey-panel/doroteati-mia-survey-panel",
+        "dist/doroteati/mia-survey-panel"
       ],
       "@dorotea/mia-survey-viewer": [
         "dist/dorotea/mia-survey-viewer/dorotea-mia-survey-viewer",
@@ -30,10 +30,7 @@
     "importHelpers": true,
     "target": "es2017",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -4,10 +4,10 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Agency Coda
-import { MiaLayoutModule } from '@agencycoda/mia-layout';
-import { MiaCoreModule } from '@agencycoda/mia-core';
-import { MiaTableModule } from '@agencycoda/mia-table';
-import { MiaFormModule } from '@agencycoda/mia-form';
+import { MiaLayoutModule } from '@doroteati/mia-layout';
+import { MiaCoreModule } from '@doroteati/mia-core';
+import { MiaTableModule } from '@doroteati/mia-table';
+import { MiaFormModule } from '@doroteati/mia-form';
 
 // Angular Material
 import { MatIconModule } from '@angular/material/icon';
@@ -29,10 +29,6 @@ import { BooleanEditorComponent } from './components/boolean-editor/boolean-edit
 import { LinearScaleEditorComponent } from './components/linear-scale-editor/linear-scale-editor.component';
 import { SelectorEditorComponent } from './components/selector-editor/selector-editor.component';
 
-
-
-
-
 @NgModule({
   declarations: [
     // Modals
@@ -44,17 +40,17 @@ import { SelectorEditorComponent } from './components/selector-editor/selector-e
     MiaSurveyCreatePageComponent,
     BooleanEditorComponent,
     LinearScaleEditorComponent,
-    SelectorEditorComponent
+    SelectorEditorComponent,
   ],
   imports: [
-		// Angular
-	  CommonModule,
+    // Angular
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
 
-		// Agency Coda
-		MiaTableModule,
+    // Agency Coda
+    MiaTableModule,
     MiaFormModule,
     MiaLayoutModule,
 
@@ -65,8 +61,8 @@ import { SelectorEditorComponent } from './components/selector-editor/selector-e
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
-	],
-  exports: []
+    MatSelectModule,
+  ],
+  exports: [],
 })
-export class MiaSurveyPanelModule { }
+export class MiaSurveyPanelModule {}

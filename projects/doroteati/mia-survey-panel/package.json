@@ -1,12 +1,12 @@
 {
-  "name": "@agencycoda/mia-survey-panel",
+  "name": "@doroteati/mia-survey-panel",
   "version": "0.0.2",
   "peerDependencies": {
     "@angular/common": ">=12.2.0",
     "@angular/core": ">=12.2.0",
     "@dorotea/mia-survey-core": ">=0.0.1",
-    "@agencycoda/mia-table": ">=11.0.43",
-    "@agencycoda/mia-form": ">=11.0.67"
+    "@doroteati/mia-table": ">=11.0.43",
+    "@doroteati/mia-form": ">=11.0.67"
   },
   "dependencies": {
     "tslib": "^2.3.0"
