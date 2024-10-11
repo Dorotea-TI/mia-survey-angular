@@ -5,7 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Agency Coda
 import { MiaLayoutModule } from '@doroteati/mia-layout';
-import { MiaCoreModule } from '@doroteati/mia-core';
 import { MiaTableModule } from '@doroteati/mia-table';
 import { MiaFormModule } from '@doroteati/mia-form';
 

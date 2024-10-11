@@ -1,8 +1,4 @@
-import {
-  MiaSurvey,
-  MiaSurveyInvitation,
-  MiaSurveyService,
-} from '@doroteati/mia-survey-core';
+import { MiaSurvey, MiaSurveyService } from '@doroteati/mia-survey-core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';

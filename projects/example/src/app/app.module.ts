@@ -23,14 +23,14 @@ import { MIA_CORE_PROVIDER } from '@doroteati/mia-core';
     {
       provide: MIA_AUTH_PROVIDER,
       useValue: {
-        baseUrl: 'https://doroteati-interno.uc.r.appspot.com/',
+        baseUrl: 'http://dorotea.test/',
         //baseUrl: 'http://0.0.0.0:8080/'
       },
     },
     {
       provide: MIA_CORE_PROVIDER,
       useValue: {
-        baseUrl: 'https://doroteati-interno.uc.r.appspot.com/',
+        baseUrl: 'http://dorotea.test/',
         //baseUrl: 'http://0.0.0.0:8080/'
       },
     },

@@ -29,6 +29,7 @@
     "@doroteati/mia-core": "^14.0.2",
     "@doroteati/mia-form": "^14.3.3",
     "@doroteati/mia-layout": "^14.0.0",
+    "@doroteati/mia-survey-core": "^14.0.0",
     "@doroteati/mia-table": "^14.0.1",
     "@ngx-pwa/local-storage": "^13.0.5",
     "moment": "^2.29.1",

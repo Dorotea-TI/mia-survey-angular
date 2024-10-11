@@ -1,10 +1,12 @@
 import { nil } from '@doroteati/mia-core';
-import { MiaSurveyService } from '@doroteati/mia-survey-core';
-import { MiaSurveyQuestion } from '@doroteati/mia-survey-core';
-import { MiaSurvey } from '@doroteati/mia-survey-core';
+import {
+  MiaSurvey,
+  MiaSurveyQuestion,
+  MiaSurveyService,
+} from '@doroteati/mia-survey-core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'mia-survey-create-page',

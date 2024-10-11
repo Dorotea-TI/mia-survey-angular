@@ -1,12 +1,12 @@
 {
   "name": "@doroteati/mia-survey-panel",
-  "version": "0.0.2",
+  "version": "14.0.0",
   "peerDependencies": {
-    "@angular/common": ">=12.2.0",
-    "@angular/core": ">=12.2.0",
-    "@doroteati/mia-survey-core": ">=0.0.1",
-    "@doroteati/mia-table": ">=11.0.43",
-    "@doroteati/mia-form": ">=11.0.67"
+    "@angular/common": ">=14.0.0",
+    "@angular/core": ">=14.0.0",
+    "@doroteati/mia-survey-core": ">=14.0.0",
+    "@doroteati/mia-table": ">=14.0.1",
+    "@doroteati/mia-form": ">=14.3.3"
   },
   "dependencies": {
     "tslib": "^2.3.0"
