@@ -16,9 +16,10 @@ import { MiaSurveyDone } from '../entities/mia_survey_done';
 export class MiaSurveyService extends MiaBaseCrudHttpService<MiaSurvey> {
   constructor(
     @Inject(MIA_CORE_PROVIDER) protected config: MiaCoreConfig,
-    protected http: HttpClient
+    protected http: HttpClient,
+    protected miaConfig: MiaCoreConfig
   ) {
-    super(http);
+    super(miaConfig, http);
     this.basePathUrl = config.baseUrl + 'mia-survey';
   }
 

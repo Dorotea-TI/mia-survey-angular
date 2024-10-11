@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "@dorotea/mia-survey-core": {
+    "@doroteati/mia-survey-core": {
       "projectType": "library",
       "root": "projects/dorotea/mia-survey-core",
       "sourceRoot": "projects/dorotea/mia-survey-core/src",
@@ -68,7 +68,7 @@
         }
       }
     },
-    "@dorotea/mia-survey-viewer": {
+    "@doroteati/mia-survey-viewer": {
       "projectType": "library",
       "root": "projects/dorotea/mia-survey-viewer",
       "sourceRoot": "projects/dorotea/mia-survey-viewer/src",

@@ -1,13 +1,13 @@
-import { MiaModel } from "@dorotea/mia-core";
+import { MiaModel } from '@doroteati/mia-core';
 
 export class MiaSurveyInvitation extends MiaModel {
-    id: number = 0;
-    survey_id: number = 0;
-    user_id: number = 0;
-    email: string = '';
-    caption: string = '';
-    created_at: string = '';
-    updated_at: string = '';
-    token: string = '';
-    limit: number = 0;
+  id: number = 0;
+  survey_id: number = 0;
+  user_id: number = 0;
+  email: string = '';
+  caption: string = '';
+  created_at: string = '';
+  updated_at: string = '';
+  token: string = '';
+  limit: number = 0;
 }

@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": ">=12.2.0",
     "@angular/core": ">=12.2.0",
-    "@dorotea/mia-survey-core": ">=0.0.1",
+    "@doroteati/mia-survey-core": ">=0.0.1",
     "@doroteati/mia-table": ">=11.0.43",
     "@doroteati/mia-form": ">=11.0.67"
   },

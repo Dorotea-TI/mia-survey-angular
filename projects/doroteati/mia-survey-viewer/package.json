@@ -1,5 +1,5 @@
 {
-  "name": "@dorotea/mia-survey-viewer",
+  "name": "@doroteati/mia-survey-viewer",
   "version": "0.0.7",
   "peerDependencies": {
     "@angular/common": "^12.2.0",

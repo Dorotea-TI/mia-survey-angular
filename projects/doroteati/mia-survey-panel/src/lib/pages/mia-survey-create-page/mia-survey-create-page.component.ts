@@ -1,7 +1,7 @@
 import { nil } from '@doroteati/mia-core';
-import { MiaSurveyService } from '@dorotea/mia-survey-core';
-import { MiaSurveyQuestion } from '@dorotea/mia-survey-core';
-import { MiaSurvey } from '@dorotea/mia-survey-core';
+import { MiaSurveyService } from '@doroteati/mia-survey-core';
+import { MiaSurveyQuestion } from '@doroteati/mia-survey-core';
+import { MiaSurvey } from '@doroteati/mia-survey-core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';

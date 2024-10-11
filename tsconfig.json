@@ -3,7 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@dorotea/mia-survey-core": [
+      "@doroteati/mia-survey-core": [
         "dist/dorotea/mia-survey-core/dorotea-mia-survey-core",
         "dist/dorotea/mia-survey-core"
       ],
@@ -11,7 +11,7 @@
         "dist/doroteati/mia-survey-panel/doroteati-mia-survey-panel",
         "dist/doroteati/mia-survey-panel"
       ],
-      "@dorotea/mia-survey-viewer": [
+      "@doroteati/mia-survey-viewer": [
         "dist/dorotea/mia-survey-viewer/dorotea-mia-survey-viewer",
         "dist/dorotea/mia-survey-viewer"
       ]
