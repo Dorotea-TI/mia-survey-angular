@@ -5,9 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build2": "ng build --configuration production --project=@doroteati/mia-survey-core && cd dist/dorotea/mia-survey-core/ && npm publish --access public",
+    "build2": "ng build --configuration production --project=@doroteati/mia-survey-core && cd dist/doroteati/mia-survey-core/ && npm publish --access public",
     "build3": "ng build --configuration production --project=@doroteati/mia-survey-panel && cd dist/doroteati/mia-survey-panel/ && npm publish --access public",
-    "build4": "ng build --configuration production --project=@doroteati/mia-survey-viewer && cd dist/dorotea/mia-survey-viewer/ && npm publish --access public",
+    "build4": "ng build --configuration production --project=@doroteati/mia-survey-viewer && cd dist/doroteati/mia-survey-viewer/ && npm publish --access public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

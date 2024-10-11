@@ -7,7 +7,7 @@ import {
 import {
   MiaSurveyExecutePageConfig,
   SurveyExecutePageComponent,
-} from 'projects/dorotea/mia-survey-viewer/src/public-api';
+} from 'projects/doroteati/mia-survey-viewer/src/public-api';
 
 const routes: Routes = [
   { path: 'survey/list', component: SurveyListPageComponent },

@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../../coverage/dorotea/mia-survey-viewer'),
+      dir: require('path').join(__dirname, '../../../coverage/doroteati/mia-survey-viewer'),
       subdir: '.',
       reporters: [
         { type: 'html' },

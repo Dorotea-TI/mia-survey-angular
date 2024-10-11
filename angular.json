@@ -8,21 +8,21 @@
   "projects": {
     "@doroteati/mia-survey-core": {
       "projectType": "library",
-      "root": "projects/dorotea/mia-survey-core",
-      "sourceRoot": "projects/dorotea/mia-survey-core/src",
+      "root": "projects/doroteati/mia-survey-core",
+      "sourceRoot": "projects/doroteati/mia-survey-core/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/dorotea/mia-survey-core/ng-package.json"
+            "project": "projects/doroteati/mia-survey-core/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/dorotea/mia-survey-core/tsconfig.lib.prod.json"
+              "tsConfig": "projects/doroteati/mia-survey-core/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/dorotea/mia-survey-core/tsconfig.lib.json"
+              "tsConfig": "projects/doroteati/mia-survey-core/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -30,9 +30,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/dorotea/mia-survey-core/src/test.ts",
-            "tsConfig": "projects/dorotea/mia-survey-core/tsconfig.spec.json",
-            "karmaConfig": "projects/dorotea/mia-survey-core/karma.conf.js"
+            "main": "projects/doroteati/mia-survey-core/src/test.ts",
+            "tsConfig": "projects/doroteati/mia-survey-core/tsconfig.spec.json",
+            "karmaConfig": "projects/doroteati/mia-survey-core/karma.conf.js"
           }
         }
       }
@@ -70,21 +70,21 @@
     },
     "@doroteati/mia-survey-viewer": {
       "projectType": "library",
-      "root": "projects/dorotea/mia-survey-viewer",
-      "sourceRoot": "projects/dorotea/mia-survey-viewer/src",
+      "root": "projects/doroteati/mia-survey-viewer",
+      "sourceRoot": "projects/doroteati/mia-survey-viewer/src",
       "prefix": "lib",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "project": "projects/dorotea/mia-survey-viewer/ng-package.json"
+            "project": "projects/doroteati/mia-survey-viewer/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/dorotea/mia-survey-viewer/tsconfig.lib.prod.json"
+              "tsConfig": "projects/doroteati/mia-survey-viewer/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/dorotea/mia-survey-viewer/tsconfig.lib.json"
+              "tsConfig": "projects/doroteati/mia-survey-viewer/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"
@@ -92,9 +92,9 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/dorotea/mia-survey-viewer/src/test.ts",
-            "tsConfig": "projects/dorotea/mia-survey-viewer/tsconfig.spec.json",
-            "karmaConfig": "projects/dorotea/mia-survey-viewer/karma.conf.js"
+            "main": "projects/doroteati/mia-survey-viewer/src/test.ts",
+            "tsConfig": "projects/doroteati/mia-survey-viewer/tsconfig.spec.json",
+            "karmaConfig": "projects/doroteati/mia-survey-viewer/karma.conf.js"
           }
         }
       }
