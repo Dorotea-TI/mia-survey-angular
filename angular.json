@@ -204,6 +204,5 @@
         }
       }
     }
-  },
-  "defaultProject": "@dorotea/mia-survey-core"
+  }
 }
