@@ -9,13 +9,6 @@ import { MiaTableModule } from '@doroteati/mia-table';
 import { MiaFormModule } from '@doroteati/mia-form';
 
 // Angular Material
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 
 // Modals
 import { MiaShareSurveyModalComponent } from './modals/mia-share-survey-modal/mia-share-survey-modal.component';
@@ -27,6 +20,12 @@ import { MiaSurveyCreatePageComponent } from './pages/mia-survey-create-page/mia
 import { BooleanEditorComponent } from './components/boolean-editor/boolean-editor.component';
 import { LinearScaleEditorComponent } from './components/linear-scale-editor/linear-scale-editor.component';
 import { SelectorEditorComponent } from './components/selector-editor/selector-editor.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -56,7 +55,6 @@ import { SelectorEditorComponent } from './components/selector-editor/selector-e
     // Angular Material
     MatIconModule,
     MatButtonModule,
-    FlexLayoutModule,
     MatProgressSpinnerModule,
     MatFormFieldModule,
     MatInputModule,

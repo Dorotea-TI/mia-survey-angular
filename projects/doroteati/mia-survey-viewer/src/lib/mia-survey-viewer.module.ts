@@ -5,17 +5,14 @@ import { SurveyExecutePageComponent } from './pages/survey-execute-page/survey-e
 
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatRadioModule } from '@angular/material/radio';
-import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-
 @NgModule({
-  declarations: [
-    SurveyExecutePageComponent
-  ],
+  declarations: [SurveyExecutePageComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -26,10 +23,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatFormFieldModule,
     MatRadioModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
-  exports: [
-    SurveyExecutePageComponent
-  ]
+  exports: [SurveyExecutePageComponent],
 })
-export class MiaSurveyViewerModule { }
+export class MiaSurveyViewerModule {}
