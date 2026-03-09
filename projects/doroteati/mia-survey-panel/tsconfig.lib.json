@@ -1,4 +1,4 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
+/* To learn more about this file see: https://angular.dev/config/tsconfig. */
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
@@ -9,11 +9,10 @@
     "types": [],
     "lib": [
       "dom",
-      "es2018"
+      "ES2022"
     ]
   },
   "exclude": [
-    "src/test.ts",
     "**/*.spec.ts"
   ]
 }

@@ -1,23 +1,23 @@
 import { MiaPageCrudComponent, MiaPageCrudConfig } from '@doroteati/mia-layout';
 import { MiaSurveyService } from '@doroteati/mia-survey-core';
 import { MiaColumn } from '@doroteati/mia-table';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'mia-survey-list-page',
+  standalone: true,
+  imports: [MiaPageCrudComponent],
   templateUrl: './survey-list-page.component.html',
-  styleUrls: ['./survey-list-page.component.css'],
+  styleUrl: './survey-list-page.component.css',
 })
 export class SurveyListPageComponent implements OnInit {
   @ViewChild('pageComp') pageComp!: MiaPageCrudComponent;
 
-  config = new MiaPageCrudConfig();
+  protected surveyService = inject(MiaSurveyService);
+  protected navigator = inject(Router);
 
-  constructor(
-    protected surveyService: MiaSurveyService,
-    protected navigator: Router
-  ) {}
+  config = new MiaPageCrudConfig();
 
   ngOnInit(): void {
     this.loadConfig();

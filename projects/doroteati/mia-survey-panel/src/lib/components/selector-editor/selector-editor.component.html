@@ -1,16 +1,16 @@
 <div class="selector-editor">
     <button (click)="onAdd()">Add Option</button>
 
-    <div *ngFor="let opt of question.data.options" class="option">
-        <mat-form-field fxFlex>
-            <mat-label>ID</mat-label>
-            <input matInput type="text" [(ngModel)]="opt.id" />
-        </mat-form-field>
-        <mat-form-field fxFlex>
-            <mat-label>Title</mat-label>
-            <input matInput type="text" [(ngModel)]="opt.title" />
-        </mat-form-field>
-    </div>
-
-    
+    @for (opt of question.data.options; track $index) {
+        <div class="option">
+            <mat-form-field class="flex-1">
+                <mat-label>ID</mat-label>
+                <input matInput type="text" [(ngModel)]="opt.id" />
+            </mat-form-field>
+            <mat-form-field class="flex-1">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" [(ngModel)]="opt.title" />
+            </mat-form-field>
+        </div>
+    }
 </div>

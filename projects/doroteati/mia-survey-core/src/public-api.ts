@@ -14,8 +14,3 @@ export * from './lib/entities/mia_survey_question';
  * Services
  */
 export * from './lib/services/mia_survey.service';
-
-/*
- * Modules
- */
-export * from './lib/mia-survey-core.module';

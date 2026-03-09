@@ -1,12 +1,28 @@
-import { enableProdMode } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes';
+import { MIA_AUTH_PROVIDER } from '@doroteati/mia-auth';
+import { MIA_CORE_PROVIDER } from '@doroteati/mia-core';
 
-import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
-
-if (environment.production) {
-  enableProdMode();
-}
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideRouter(routes),
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch()),
+    {
+      provide: MIA_AUTH_PROVIDER,
+      useValue: {
+        baseUrl: 'http://localhost/',
+      },
+    },
+    {
+      provide: MIA_CORE_PROVIDER,
+      useValue: {
+        baseUrl: 'http://localhost/',
+      },
+    },
+  ],
+});

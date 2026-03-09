@@ -1,0 +1,8 @@
+.option {
+    display: flex;
+    gap: 1em;
+}
+
+.flex-1 {
+    flex: 1;
+}

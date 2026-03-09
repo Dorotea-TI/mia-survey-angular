@@ -1,11 +1,6 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MiaSurvey } from '../entities/mia_survey';
-import {
-  MiaBaseCrudHttpService,
-  MiaCoreConfig,
-  MIA_CORE_PROVIDER,
-} from '@doroteati/mia-core';
-import { HttpClient } from '@angular/common/http';
+import { MiaBaseCrudHttpService } from '@doroteati/mia-core';
 import { Observable } from 'rxjs';
 import { MiaSurveyInvitation } from '../entities/mia_survey_invitation';
 import { MiaSurveyDone } from '../entities/mia_survey_done';
@@ -14,12 +9,9 @@ import { MiaSurveyDone } from '../entities/mia_survey_done';
   providedIn: 'root',
 })
 export class MiaSurveyService extends MiaBaseCrudHttpService<MiaSurvey> {
-  constructor(
-    @Inject(MIA_CORE_PROVIDER) protected config: MiaCoreConfig,
-    protected http: HttpClient
-  ) {
-    super(config, http);
-    this.basePathUrl = config.baseUrl + 'mia-survey';
+  constructor() {
+    super();
+    this.basePathUrl = this.config.baseUrl + 'mia-survey';
   }
 
   fetchPublicLink(surveyId: number): Observable<MiaSurveyInvitation> {

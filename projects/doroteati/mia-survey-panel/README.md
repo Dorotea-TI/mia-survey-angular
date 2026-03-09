@@ -1,24 +1,50 @@
-# MiaSurveyPanel
+# @doroteati/mia-survey-panel
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+Admin UI components for creating and managing surveys.
 
-## Code scaffolding
+**Angular 21** | **Standalone** | **SSR-compatible**
 
-Run `ng generate component component-name --project mia-survey-panel` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mia-survey-panel`.
-> Note: Don't forget to add `--project mia-survey-panel` or else it will be added to the default project in your `angular.json` file. 
+## Install
+
+```bash
+npm install @doroteati/mia-survey-panel
+```
+
+## Components
+
+- `SurveyListPageComponent` - Survey list with search, edit and delete actions
+- `MiaSurveyCreatePageComponent` - Create/edit survey with dynamic question types
+- `BooleanEditorComponent` - Boolean question editor
+- `LinearScaleEditorComponent` - Linear scale question editor
+- `SelectorEditorComponent` - Selector question editor
+
+## Usage
+
+```typescript
+import { SurveyListPageComponent, MiaSurveyCreatePageComponent } from '@doroteati/mia-survey-panel';
+
+// In your routes:
+export const routes: Routes = [
+  { path: 'survey/list', component: SurveyListPageComponent },
+  { path: 'survey/create', component: MiaSurveyCreatePageComponent },
+  { path: 'survey/edit/:id', component: MiaSurveyCreatePageComponent },
+];
+```
 
 ## Build
 
-Run `ng build mia-survey-panel` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+ng build @doroteati/mia-survey-panel
+```
 
-## Publishing
+## Peer Dependencies
 
-After building your library with `ng build mia-survey-panel`, go to the dist folder `cd dist/mia-survey-panel` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test mia-survey-panel` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `@angular/common` >= 21.0.0
+- `@angular/core` >= 21.0.0
+- `@angular/material` >= 21.0.0
+- `@angular/forms` >= 21.0.0
+- `@angular/router` >= 21.0.0
+- `@doroteati/mia-survey-core` >= 21.0.0
+- `@doroteati/mia-core` >= 21.0.0
+- `@doroteati/mia-layout` >= 21.1.0
+- `@doroteati/mia-table` >= 21.1.0

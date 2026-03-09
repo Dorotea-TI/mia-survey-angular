@@ -3,100 +3,102 @@
         <button mat-flat-button [routerLink]="'/survey/list'">
             <mat-icon>arrow_back</mat-icon>
         </button>
-        <b *ngIf="survey.id <= 0">Create Survey </b>
-        <b *ngIf="survey.id > 1">{{ survey.title }}</b>
+        @if (survey.id <= 0) {
+            <b>Create Survey </b>
+        }
+        @if (survey.id > 1) {
+            <b>{{ survey.title }}</b>
+        }
     </h5>
     <div class="spacer"></div>
     <button mat-flat-button color="primary" class="btn" (click)="onClickSave()">Save</button>
-    <!--<button *ngIf="poll.id > 0" mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
-    <mat-menu #menu="matMenu" fxHide fxShow.xs>
-        <button mat-menu-item><mat-icon>shared</mat-icon> Send Survey to:</button>
-        <button mat-menu-item><mat-icon>analytics</mat-icon> Analytics</button>
-        <button mat-menu-item><mat-icon>create</mat-icon> Edit</button>
-        <button mat-menu-item><mat-icon>delete</mat-icon> Delete</button>
-    </mat-menu>-->
 </div>
 
-<div *ngIf="!isLoading" class="poll-survey-create">
-    <div class="container">
-        <div class="header">
+@if (!isLoading) {
+    <div class="poll-survey-create">
+        <div class="container">
+            <div class="header">
+                <input #inputFile miaFileGoogle (fileUploaded)="onUploadFile($event)" (startUpload)="isUploading = true" type="file" style="display: none;" accept="image/*" />
 
-            <input #inputFile miaFileGoogle (fileUploaded)="onUploadFile($event)" (startUpload)="isUploading = true" type="file" style="display: none;" accept="image/*" />
-        
-            <div class="box" *ngIf="!isUploading && (survey.photo == undefined)">
-                <button mat-button (click)="inputFile.click()" class="header__btn-add">
-                    <mat-icon>collections</mat-icon>
-                    <h5><b>Upload Header image</b></h5>
-                    <p class="body-2">Size recommended (800x240px)</p>
-                </button>
+                @if (!isUploading && survey.photo == undefined) {
+                    <div class="box">
+                        <button mat-button (click)="inputFile.click()" class="header__btn-add">
+                            <mat-icon>collections</mat-icon>
+                            <h5><b>Upload Header image</b></h5>
+                            <p class="body-2">Size recommended (800x240px)</p>
+                        </button>
+                    </div>
+                }
+
+                @if (isUploading) {
+                    <div class="box">
+                        <mat-spinner diameter="40"></mat-spinner>
+                    </div>
+                }
+
+                @if (!isUploading && survey.photo != undefined) {
+                    <img [src]="survey.photo.url" (click)="inputFile.click()" onerror="this.src='/assets/img/user-avatar-empty.svg';" />
+                    <button mat-icon-button class="header__btn-delete" color="warn" matTooltip="Remove Image Header" (click)="survey.photo = undefined"><mat-icon>delete</mat-icon></button>
+                }
             </div>
-        
-            <div class="box" *ngIf="isUploading">
-                <mat-spinner diameter="40"></mat-spinner>
+
+            <div class="introduction box">
+                <mat-form-field class="title">
+                    <input matInput type="text" placeholder="Title survey" [(ngModel)]="survey.title" />
+                </mat-form-field>
+
+                <mat-form-field>
+                    <textarea matInput type="text" cdkTextareaAutosize placeholder="Description survey" [(ngModel)]="survey.caption"></textarea>
+                </mat-form-field>
             </div>
-            
-            <img *ngIf="!isUploading && survey.photo != undefined" [src]="survey.photo.url" (click)="inputFile.click()" onerror="this.src='/assets/img/user-avatar-empty.svg';" />
-        
-            <button *ngIf="!isUploading && survey.photo != undefined" mat-icon-button class="header__btn-delete" color="warn" matTooltip="Remove Image Header" (click)="survey.photo = undefined"><mat-icon>delete</mat-icon></button>
-        </div>
-    
-        <div class="introduction box">
-            <mat-form-field class="title">
-                <input matInput type="text" placeholder="Title survey" [(ngModel)]="survey.title" />
-            </mat-form-field>
 
-            <mat-form-field>
-                <textarea matInput type="text" cdkTextareaAutosize placeholder="Description survey"  [(ngModel)]="survey.caption"></textarea>
-            </mat-form-field>
-        </div>
+            @for (question of survey.questions; track $index) {
+                <div class="item edit-mode">
+                    <div class="content">
+                        <div class="box">
+                            <div class="top-setting-bar">
+                                <div class="flex-row gap-2">
+                                    <mat-form-field class="flex-1">
+                                        <mat-label>Title of Question</mat-label>
+                                        <input matInput type="text" [(ngModel)]="question.title" />
+                                    </mat-form-field>
 
-        <div *ngFor="let question of survey.questions" class="item edit-mode">
-            <div class="content">
-                <div class="box">
-                    
-                    <div class="top-setting-bar">
-                        <div fxLayout="row" fxLayoutGap="2em">
-                            <mat-form-field fxFlex>
-                                <mat-label>Title of Question</mat-label>
-                                <input matInput type="text" [(ngModel)]="question.title" />
-                                <!-- [(ngModel)]="item.question" -->
-                            </mat-form-field>
-                    
-                            <mat-form-field fxFlex appearance="outline">
-                                <mat-label>Type Question</mat-label>
-                                <mat-select [(ngModel)]="question.type">
-                                    <mat-option *ngFor="let subtype of subtypes" [value]="subtype.id">
-                                        {{ subtype.title }}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+                                    <mat-form-field class="flex-1" appearance="outline">
+                                        <mat-label>Type Question</mat-label>
+                                        <mat-select [(ngModel)]="question.type">
+                                            @for (subtype of subtypes; track subtype.id) {
+                                                <mat-option [value]="subtype.id">
+                                                    {{ subtype.title }}
+                                                </mat-option>
+                                            }
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="flex-col">
+                                @if (question.type == 3) {
+                                    <survey-linear-scale-editor [question]="question"></survey-linear-scale-editor>
+                                }
+                                @if (question.type == 4) {
+                                    <survey-selector-editor [question]="question"></survey-selector-editor>
+                                }
+                            </div>
+
+                            <div class="bottom-setting-bar">
+                                <button mat-icon-button matTooltip="Duplicate" (click)="onClickDuplicate(question)"><mat-icon>content_copy</mat-icon></button>
+                                <button mat-icon-button matTooltip="Delete" (click)="onClickRemoveQuestion(question)"><mat-icon>delete</mat-icon></button>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div fxLayout="column">
-                        <survey-linear-scale-editor *ngIf="question.type == 3"  [question]="question"></survey-linear-scale-editor>
-                        <survey-selector-editor *ngIf="question.type == 4"  [question]="question"></survey-selector-editor>
-                        <!--<poll-short-answer-component *ngIf="question.data.subtype == 0" [question]="question"></poll-short-answer-component>
-                        <poll-paragraph-component *ngIf="question.data.subtype == 1" [question]="question"></poll-paragraph-component>
-                        <poll-multiple-choice-component *ngIf="question.data.subtype == 2" [question]="question"></poll-multiple-choice-component>
-                        <poll-checkboxes-component *ngIf="question.data.subtype == 3" [question]="question"></poll-checkboxes-component>
-                        <poll-linear-scale-component *ngIf="question.data.subtype == 4" [question]="question"></poll-linear-scale-component>
-                        <poll-date-component *ngIf="question.data.subtype == 5" [question]="question"></poll-date-component>-->
-                    </div>
-                    
+                </div>
+            }
 
-                    <div class="bottom-setting-bar">
-                        <button mat-icon-button matTooltip="Duplicate" (click)="onClickDuplicate(question)"><mat-icon>content_copy</mat-icon></button>
-                        <button mat-icon-button matTooltip="Delete" (click)="onClickRemoveQuestion(question)"><mat-icon>delete</mat-icon></button>
-                    </div>
+            <div class="settings-bar">
+                <div class="settings box">
+                    <button mat-icon-button matTooltip="Add Question" (click)="onClickAddQuestion()"><mat-icon>add_circle_outline</mat-icon></button>
                 </div>
             </div>
         </div>
-
-        <div class="settings-bar">
-            <div class="settings box">
-                <button mat-icon-button matTooltip="Add Question" (click)="onClickAddQuestion()"><mat-icon>add_circle_outline</mat-icon></button>
-            </div>
-        </div>
     </div>
-</div>
+}

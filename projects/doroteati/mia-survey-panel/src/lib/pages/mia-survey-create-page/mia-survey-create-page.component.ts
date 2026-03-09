@@ -4,28 +4,50 @@ import {
   MiaSurveyQuestion,
   MiaSurveyService,
 } from '@doroteati/mia-survey-core';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { map, switchMap, tap } from 'rxjs/operators';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { LinearScaleEditorComponent } from '../../components/linear-scale-editor/linear-scale-editor.component';
+import { SelectorEditorComponent } from '../../components/selector-editor/selector-editor.component';
 
 @Component({
   selector: 'mia-survey-create-page',
+  standalone: true,
+  imports: [
+    FormsModule,
+    RouterModule,
+    MatIconModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatTooltipModule,
+    LinearScaleEditorComponent,
+    SelectorEditorComponent,
+  ],
   templateUrl: './mia-survey-create-page.component.html',
-  styleUrls: ['./mia-survey-create-page.component.scss'],
+  styleUrl: './mia-survey-create-page.component.scss',
 })
 export class MiaSurveyCreatePageComponent implements OnInit {
-  isLoading = false;
+  protected route = inject(ActivatedRoute);
+  protected surveyService = inject(MiaSurveyService);
+  protected navigator = inject(Router);
 
+  isLoading = false;
   survey = new MiaSurvey();
   subtypes = MiaSurveyQuestion.getSubtypes();
-
   isUploading = false;
-
-  constructor(
-    protected route: ActivatedRoute,
-    protected surveyService: MiaSurveyService,
-    protected navigator: Router
-  ) {}
 
   ngOnInit(): void {
     this.survey.questions = [];
@@ -35,7 +57,7 @@ export class MiaSurveyCreatePageComponent implements OnInit {
   onClickSave() {
     this.surveyService
       .saveOb(this.survey)
-      .subscribe((res) => this.navigator.navigateByUrl('survey/list'));
+      .subscribe({ next: (res) => this.navigator.navigateByUrl('survey/list') });
   }
 
   onClickAddQuestion() {
@@ -53,20 +75,18 @@ export class MiaSurveyCreatePageComponent implements OnInit {
 
   loadParams() {
     this.route.params
-      .pipe(map((params) => (params.id !== undefined ? params.id : undefined)))
-      .pipe(nil())
-      .pipe(tap((id) => (this.isLoading = true)))
       .pipe(
+        map((params) => (params['id'] !== undefined ? params['id'] : undefined)),
+        nil(),
+        tap(() => (this.isLoading = true)),
         switchMap((surveyId) =>
-          this.surveyService.fetchWithRelation(surveyId as number, [
-            'questions',
-          ])
-        )
+          this.surveyService.fetchWithRelation(surveyId as number, ['questions'])
+        ),
+        tap((survey) => (this.survey = survey))
       )
-      .pipe(tap((survey) => (this.survey = survey)))
-      .subscribe(
-        (survey) => (this.isLoading = false),
-        (error) => this.navigator.navigateByUrl('survey/list')
-      );
+      .subscribe({
+        next: () => (this.isLoading = false),
+        error: () => this.navigator.navigateByUrl('survey/list'),
+      });
   }
 }

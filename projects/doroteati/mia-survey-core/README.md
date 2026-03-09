@@ -1,25 +1,40 @@
-# MiaSurveyCore
+# @doroteati/mia-survey-core
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+Core library for the Mia Survey system. Provides entities, models and services.
 
-## Code scaffolding
+**Angular 21** | **Standalone** | **SSR-compatible**
 
-Run `ng generate component component-name --project mia-survey-core` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mia-survey-core`.
+## Install
 
-> Note: Don't forget to add `--project mia-survey-core` or else it will be added to the default project in your `angular.json` file.
+```bash
+npm install @doroteati/mia-survey-core
+```
+
+## Entities
+
+- `MiaSurvey` - Survey model
+- `MiaSurveyQuestion` - Question model (Boolean, Short answer, Paragraph, Linear Scale, Selector)
+- `MiaSurveyInvitation` - Invitation model
+- `MiaSurveyDone` - Completed survey model
+
+## Services
+
+- `MiaSurveyService` - CRUD service for surveys (`providedIn: 'root'`)
+
+## Usage
+
+```typescript
+import { MiaSurvey, MiaSurveyQuestion, MiaSurveyService } from '@doroteati/mia-survey-core';
+```
 
 ## Build
 
-Run `ng build mia-survey-core` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+ng build @doroteati/mia-survey-core
+```
 
-## Publishing
+## Peer Dependencies
 
-After building your library with `ng build mia-survey-core`, go to the dist folder `cd dist/mia-survey-core` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test mia-survey-core` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `@angular/common` >= 21.0.0
+- `@angular/core` >= 21.0.0
+- `@doroteati/mia-core` >= 21.0.0

@@ -1,5 +1,4 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import {
   MiaSurveyCreatePageComponent,
   SurveyListPageComponent,
@@ -9,7 +8,7 @@ import {
   SurveyExecutePageComponent,
 } from 'projects/doroteati/mia-survey-viewer/src/public-api';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: 'survey/list', component: SurveyListPageComponent },
   { path: 'survey/create', component: MiaSurveyCreatePageComponent },
   { path: 'survey/edit/:id', component: MiaSurveyCreatePageComponent },
@@ -24,9 +23,3 @@ const routes: Routes = [
     } as MiaSurveyExecutePageConfig,
   },
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

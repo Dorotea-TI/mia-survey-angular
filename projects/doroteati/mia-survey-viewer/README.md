@@ -1,24 +1,60 @@
-# MiaSurveyViewer
+# @doroteati/mia-survey-viewer
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
+Public-facing UI for executing and completing surveys.
 
-## Code scaffolding
+**Angular 21** | **Standalone** | **SSR-compatible**
 
-Run `ng generate component component-name --project mia-survey-viewer` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project mia-survey-viewer`.
-> Note: Don't forget to add `--project mia-survey-viewer` or else it will be added to the default project in your `angular.json` file. 
+## Install
+
+```bash
+npm install @doroteati/mia-survey-viewer
+```
+
+## Components
+
+- `SurveyExecutePageComponent` - Survey execution page with all question types
+- `MiaSurveyExecutePageConfig` - Configuration class for customization
+
+## Usage
+
+```typescript
+import { SurveyExecutePageComponent, MiaSurveyExecutePageConfig } from '@doroteati/mia-survey-viewer';
+
+// In your routes:
+export const routes: Routes = [
+  {
+    path: 'survey/run/:id/:token',
+    component: SurveyExecutePageComponent,
+    data: {
+      onlyInvitation: true,
+      buttonBackURL: '/',
+      buttonColor: '#03A4B3',
+      textColor: '#002A5C',
+    } as MiaSurveyExecutePageConfig,
+  },
+];
+```
+
+## Configuration
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `showHeader` | boolean | `false` | Show survey header image |
+| `onlyInvitation` | boolean | `false` | Require valid invitation token |
+| `buttonColor` | string | `'#000000'` | Submit button background color |
+| `buttonBackURL` | string | `''` | URL for "back" button after completion |
+| `textColor` | string | `'#000000'` | Text color |
 
 ## Build
 
-Run `ng build mia-survey-viewer` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+ng build @doroteati/mia-survey-viewer
+```
 
-## Publishing
+## Peer Dependencies
 
-After building your library with `ng build mia-survey-viewer`, go to the dist folder `cd dist/mia-survey-viewer` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test mia-survey-viewer` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- `@angular/common` >= 21.0.0
+- `@angular/core` >= 21.0.0
+- `@angular/material` >= 21.0.0
+- `@angular/forms` >= 21.0.0
+- `@doroteati/mia-survey-core` >= 21.0.0

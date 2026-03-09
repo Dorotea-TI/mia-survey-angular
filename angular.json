@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "4751c3d7-be64-40a3-8ba4-76a7687d59b3"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -26,14 +26,6 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/doroteati/mia-survey-core/src/test.ts",
-            "tsConfig": "projects/doroteati/mia-survey-core/tsconfig.spec.json",
-            "karmaConfig": "projects/doroteati/mia-survey-core/karma.conf.js"
-          }
         }
       }
     },
@@ -57,14 +49,6 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/doroteati/mia-survey-panel/src/test.ts",
-            "tsConfig": "projects/doroteati/mia-survey-panel/tsconfig.spec.json",
-            "karmaConfig": "projects/doroteati/mia-survey-panel/karma.conf.js"
-          }
         }
       }
     },
@@ -88,14 +72,6 @@
             }
           },
           "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/doroteati/mia-survey-viewer/src/test.ts",
-            "tsConfig": "projects/doroteati/mia-survey-viewer/tsconfig.spec.json",
-            "karmaConfig": "projects/doroteati/mia-survey-viewer/karma.conf.js"
-          }
         }
       }
     },
@@ -104,9 +80,6 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
         }
       },
       "root": "projects/example",
@@ -114,20 +87,28 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/example",
             "index": "projects/example/src/index.html",
-            "main": "projects/example/src/main.ts",
-            "polyfills": "projects/example/src/polyfills.ts",
+            "browser": "projects/example/src/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/example/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/example/src/favicon.ico",
-              "projects/example/src/assets"
+              {
+                "glob": "**/*",
+                "input": "projects/example/src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "favicon.ico",
+                "input": "projects/example/src",
+                "output": "/"
+              }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "@angular/material/prebuilt-themes/azure-blue.css",
               "projects/example/src/styles.scss"
             ],
             "scripts": []
@@ -137,30 +118,21 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "projects/example/src/environments/environment.ts",
-                  "with": "projects/example/src/environments/environment.prod.ts"
+                  "maximumWarning": "8kb",
+                  "maximumError": "16kb"
                 }
               ],
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -176,31 +148,6 @@
             }
           },
           "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "example:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/example/src/test.ts",
-            "polyfills": "projects/example/src/polyfills.ts",
-            "tsConfig": "projects/example/tsconfig.spec.json",
-            "karmaConfig": "projects/example/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/example/src/favicon.ico",
-              "projects/example/src/assets"
-            ],
-            "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "projects/example/src/styles.scss"
-            ],
-            "scripts": []
-          }
         }
       }
     }

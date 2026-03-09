@@ -1,18 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ItemBaseEditorComponent } from '../item-base-editor.component';
 
 @Component({
   selector: 'survey-boolean-editor',
+  standalone: true,
   templateUrl: './boolean-editor.component.html',
-  styleUrls: ['./boolean-editor.component.css']
+  styleUrl: './boolean-editor.component.css',
 })
-export class BooleanEditorComponent extends ItemBaseEditorComponent implements OnInit {
-
-  constructor() {
-    super();
-  }
-
-  ngOnInit(): void {
-  }
-
-}
+export class BooleanEditorComponent extends ItemBaseEditorComponent {}

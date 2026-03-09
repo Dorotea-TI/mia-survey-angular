@@ -5,8 +5,4 @@
 /**
  * Pages
  */
- export * from './lib/pages/survey-execute-page/survey-execute-page.component';
-/**
- * Modules
- */
-export * from './lib/mia-survey-viewer.module';
+export * from './lib/pages/survey-execute-page/survey-execute-page.component';
