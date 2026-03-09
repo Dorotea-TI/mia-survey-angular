@@ -1,13 +1,17 @@
 {
   "name": "mia-survey-angular",
-  "version": "0.0.0",
+  "version": "21.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "build2": "ng build --configuration production --project=@doroteati/mia-survey-core && cd dist/doroteati/mia-survey-core/ && npm publish --access public",
-    "build3": "ng build --configuration production --project=@doroteati/mia-survey-panel && cd dist/doroteati/mia-survey-panel/ && npm publish --access public",
-    "build4": "ng build --configuration production --project=@doroteati/mia-survey-viewer && cd dist/doroteati/mia-survey-viewer/ && npm publish --access public",
+    "start": "ng serve example",
+    "build": "ng build --configuration production --project=@doroteati/mia-survey-core && ng build --configuration production --project=@doroteati/mia-survey-panel && ng build --configuration production --project=@doroteati/mia-survey-viewer",
+    "build:core": "ng build --configuration production --project=@doroteati/mia-survey-core",
+    "build:panel": "ng build --configuration production --project=@doroteati/mia-survey-core && ng build --configuration production --project=@doroteati/mia-survey-panel",
+    "build:viewer": "ng build --configuration production --project=@doroteati/mia-survey-core && ng build --configuration production --project=@doroteati/mia-survey-viewer",
+    "publish:core": "npm run build:core && cd dist/doroteati/mia-survey-core/ && npm publish --access public",
+    "publish:panel": "npm run build:panel && cd dist/doroteati/mia-survey-panel/ && npm publish --access public",
+    "publish:viewer": "npm run build:viewer && cd dist/doroteati/mia-survey-viewer/ && npm publish --access public",
+    "publish:all": "npm run build && cd dist/doroteati/mia-survey-core/ && npm publish --access public && cd ../mia-survey-panel/ && npm publish --access public && cd ../mia-survey-viewer/ && npm publish --access public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
